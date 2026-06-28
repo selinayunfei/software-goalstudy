@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+        <title> go(al)! study </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+
+    <body>
+        <div class = "sport-buttons">
+            <div class = "button" id = "football-button"> <p>Football</p> </div>
+            <div class = "button" id = "formula1-button"> <p>Formula 1</p> </div>
+            <div class = "button" id = "figskating-button"> <p>Fig. Skating</p> </div>
+        </div>
+
+        <div class = "container">
+            <div id = "football" class = "football-page active">
+                <!--this is football! -->
+
+                <!-- live or simulated? -->
+                <div class ="live-or-simulated">
+                    <p> live </p>
+                </div>
+
+                <!-- scores -->
+                <div class = "scores">
+                    <p id = "country-1-score"></p>
+                    <p> &mdash; </p>
+                    <p id = "country-2-score"></p>
+                </div>
+
+                <!-- competitors -->
+                <div class = "competitors">
+                    <img id="country-1" class = "flag">
+                    <p style = "font-size: 25px;"> vs.</p>
+                    <img id="country-2" class = "flag">
+                </div>
+
+                <!-- time (MOCKUP!) -->
+                <div class = "time">
+                    <p><b> TIME </b></p>
+                    <p style="font-size: 30px;"> 01:08:09</p>
+                    <p> 60:09 SECOND HALF</p>
+                </div>
+            </div>
+
+            <div id = "formula1" class = "f1-page">
+                <!-- this is f1!-->
+
+                <!-- team line-up -->
+                <div class = "teams">
+                    <div class ="teamicon" id = "team1-icon">
+                        <img id = "p1-team">
+                    </div>
+                    <div class ="teamicon" id = "team2-icon">
+                        <img id = "p2-team">
+                    </div>
+                    <div class ="teamicon" id = "team3-icon">
+                        <img id = "p3-team">
+                    </div>
+                </div>
+
+                <!-- driver line-up-->
+                <div class = "drivers">
+                    <p style = "font-size: 30px;"> <b>P1</b> &emsp;&emsp; <span id="p1-driver"></span></p>
+                    <div class = "secondary">
+                        <p> <b>P2</b> <span id ="p2-driver"></span></p>
+                        <p> <b>P3</b> <span id ="p3-driver"></span></p>
+                    </div>
+                </div>
+
+                <!-- lap & time -->
+                <div class = "lap-time">
+                    <p><b> LAP: </b><span id = "lap-no"></span></p>
+                    <p><b> TIME:</b><span id = "time"></span></p>
+                </div>
+
+            </div>
+
+            <div id = "figskating" class = "figskating-page">
+                <p> coming soon!</p>
+                <p> season begins August 20 </p>
+            </div>
+
+        </div>
+
+        <div class = "break-button">
+            <p> take a break! </p> <!-- set this so that later you can switch between take a break and get back to studying-->
+        </div>
+
+        <script>
+            function switchTab(tabId) {
+                const sections = document.querySelectorAll('[class*="page"]');
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+            }
+
+            const Football = document.querySelector('#football-button');
+            const FormulaOne = document.querySelector('#formula1-button');
+            const FigSkating = document.querySelector('#figskating-button');
+
+            Football.addEventListener('click', () =>{
+                switchTab('football');
+            });
+            FormulaOne.addEventListener('click', () => {
+                switchTab('formula1');
+            });
+            FigSkating.addEventListener('click', () => {
+                switchTab('figskating');
+            });
+
+            // for football
+            function foloaddata(countryone, countrytwo){
+                document.getElementById("country-1").src = 
+                    `media/flags/${countryone}.jpg`;
+                document.getElementById("country-2").src =
+                    `media/flags/${countrytwo}.jpg`;
+
+                document.getElementById("country-1-score").textContent = 
+                    "1";
+                document.getElementById("country-2-score").textContent = 
+                    "7";
+            }
+
+            foloaddata("brazil","germany");
+
+            // for f1 TO BE UPDATED; mockup
+            const directory = [
+            {
+                team: "Red Bull",
+                file: "media/f1 teams/redbull.png",
+                colour: "rgba(53, 113, 198)"
+
+            },
+            {
+                team: "Ferrari",
+                file: "media/f1 teams/ferrari.png",
+                colour: "rgba(232, 1, 45)"
+            },
+            {
+                team: "Mercedes",
+                file: "media/f1 teams/mercedes.png",
+                colour: "rgba(38, 239, 206)"
+            },
+            {
+                team: "McLaren",
+                file: "media/f1 teams/mclaren.png",
+                colour: "rgba(255, 128, 1)"
+            }
+            ]
+            
+
+            function f1loaddata(){
+                document.getElementById("p1-team").src =
+                    directory[2].file;
+                document.getElementById("team1-icon").style.backgroundColor = 
+                    directory[2].colour;
+
+                document.getElementById("p2-team").src = 
+                    directory[0].file;
+                document.getElementById("team2-icon").style.backgroundColor = 
+                    directory[0].colour;
+
+                document.getElementById("p3-team").src =
+                    directory[2].file;
+                document.getElementById("team3-icon").style.backgroundColor = 
+                    directory[2].colour;
+
+
+                document.getElementById("p1-driver").textContent =
+                    "George Russell";
+                document.getElementById("p2-driver").textContent = 
+                    "Max Verstappen";
+                document.getElementById("p3-driver").textContent = 
+                    "Kimi Antonelli";
+
+                document.getElementById("lap-no").textContent =
+                    "71";
+                document.getElementById("time").textContent = 
+                    "1:26:37.979";
+            }
+            f1loaddata();
+        </script>
+
+    </body>
+
+</html>

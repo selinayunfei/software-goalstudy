@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+body{
+    background-color: white;
+    padding: 20px;
+
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.sport-buttons {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 100px;
+    height: 20px;
+
+    place-items: center;
+
+    border: 2px solid black; 
+    border-radius: 15px;
+
+    padding: 5px;
+    margin: 5px;
+
+    cursor: pointer;
+}
+
+.container {
+    width: 700px;
+    height: 400px;
+
+    border: 2px solid black; 
+    border-radius: 15px;
+
+    margin-top: -100px;
+
+    display: grid;
+    place-items: center;
+
+}
+
+/*football*/
+.football-page{
+    display: none;
+    place-items:center;
+}
+
+.live-or-simulated{
+    width: 50px;
+    height: 20px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+
+    place-items: center;
+
+    margin-left: auto;
+    transform: translate(130px, -30px);
+
+}
+
+.competitors{
+    display: flex;
+    justify-content: space-between;
+
+    width: 350px;
+    height: auto;
+}
+.flag{
+    width: 60px;
+    height: 40px;
+
+}
+
+.scores{
+    display:flex;
+    justify-content: space-between;
+
+    width: 300px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+.scores p{
+    font-size: 30px;
+}
+
+.time{
+    margin-top: 50px;
+    place-items: center;
+}
+.time p{
+    padding: 5px;
+}
+
+/* formula one!!*/
+.f1-page{
+    display: none;
+}
+
+.teams{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.teamicon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    background-color: gray;
+}
+.teamicon img{
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.secondary{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.secondary p{
+    font-size: 19px;
+}
+
+.lap-time{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 40px;
+}
+.lap-time p{
+    font-size: 20px;
+}
+
+/*figure skating! tba*/
+.figskating-page{
+    display: none;
+}
+
+.active {
+    display: grid;
+}
+
+/*take a break !*/
+.break-button {
+    width: 120px;
+    height: 30px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+
+    display: grid;
+    place-items: center;
+
+    cursor: pointer;
+}
+
+
