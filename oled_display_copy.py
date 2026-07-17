@@ -1,4 +1,8 @@
-# a copy of the oled display. edits and code will be written here before deployed and debugged on raspberry pi
+'''
+File Name: oled_display_copy.py
+Description: this is a copy of the oled display. edits and code are written here before deployed and debugged on raspberry pi.
+the python file has been adapted from script.js. 
+'''
 
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_ssd1306
@@ -26,7 +30,7 @@ elapsed = 0
 elapsed_seconds = 0
 extra = None
 
-#country codes 
+# country codes 
 codes = {
     "England": "ENG",
     "Argentina": "ARG",
@@ -34,6 +38,7 @@ codes = {
     "Spain": "ESP",
 }
 
+# fetching live scores from the API
 def fetchLiveScores():
     global team1, team2
     global score1, score2
@@ -87,7 +92,7 @@ def fetchLiveScores():
         elapsed = new_elapsed
         elapsed_seconds = (elapsed + (extra or 0))*60
 
-
+# setting up the timer
 def update_timer():
     global elapsed_seconds
     global elapsed
