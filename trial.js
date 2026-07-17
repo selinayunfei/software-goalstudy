@@ -38,11 +38,15 @@ function displayScores(matches) {
 
     const elapsedMinutes = match.fixture.status.elapsed;
     const extraTime = match.fixture.status.extra;
+
+    const league_id = match["league"]["id"]
     if (extraTime !== null) {
       console.log(`[${elapsedMinutes}' + ${extraTime}] ${homeTeam} ${homeGoals} - ${awayGoals} ${awayTeam}`);
     } else {
       console.log(`[${elapsedMinutes}'] ${homeTeam} ${homeGoals} - ${awayGoals} ${awayTeam}`);
     }
+
+    console.log(league_id)
   });
 }
 

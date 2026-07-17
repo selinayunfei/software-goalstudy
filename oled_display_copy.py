@@ -28,13 +28,10 @@ extra = None
 
 #country codes 
 codes = {
-    "Norway": "NOR",
     "England": "ENG",
     "Argentina": "ARG",
-    "Switzerland": "SUI",
     "France": "FRA",
     "Spain": "ESP",
-
 }
 
 def fetchLiveScores():
@@ -45,6 +42,7 @@ def fetchLiveScores():
     global elapsed_seconds
     global status
     global extra
+    global empty_polls
 
     headers = {
         "x-apisports-key": API_KEY
@@ -59,9 +57,13 @@ def fetchLiveScores():
         return
 
     if len(data["response"]) == 0:
-        status = "MO"
+        if status in ("2H","ET","BT","P"):
+            empty_polls += 1
+            if empty_polls >= 2:
+                status = "MO"
         return
     
+    empty_polls = 0
     match = data["response"][0]
 
     home = match["teams"]["home"]["name"]
@@ -76,22 +78,21 @@ def fetchLiveScores():
     pen1 = match["score"]["penalty"]["home"]
     pen2 = match["score"]["penalty"]["away"]
 
-    elapsed = match["fixture"]["status"]["elapsed"]
+    new_elapsed = match["fixture"]["status"]["elapsed"]
     extra = match["fixture"]["status"]["extra"]
 
     status = match["fixture"]["status"]["short"]
 
-    if extra is None:
-        elapsed_seconds = elapsed*60
-    else: 
-        elapsed_seconds = (elapsed+extra)*60
+    if new_elapsed is not None:
+        elapsed = new_elapsed
+        elapsed_seconds = (elapsed + (extra or 0))*60
 
 
 def update_timer():
     global elapsed_seconds
     global elapsed
     
-    if status not in ["HT","P","PEN","FT","AET"]:
+    if status not in ["HT", "BT","P","PEN","FT","AET"]:
         elapsed_seconds += 1
         elapsed = elapsed_seconds // 60
 
@@ -124,7 +125,7 @@ def update_oled():
 
     if status == "P":
         team_1_score = f"{score1} ({pen1})"
-        draw.text((10,10), team_1_score, font=font, fill=255)
+        draw.text((10,10), team_1_score, font=font, fill=255) #change this placement slightly so that it's more centered
 
         draw.text((WIDTH/2,10),"-",font=font,fill=255)
         
@@ -143,10 +144,10 @@ def update_oled():
     #time
     seconds = elapsed_seconds % 60
 
-    if elapsed >= 90 and extra != None:
-        timer = f"90+{extra + (elapsed-90)}"
-    elif elapsed == 45 and extra != None:
-        timer = f"45+{extra+(elapsed-45)}"
+    if elapsed >= 90 and extra is not None:
+        timer = f"90+{elapsed-90}"
+    elif 90 > elapsed >= 45 and extra is not None:
+        timer = f"45+{elapsed-45}"
     else:
         timer = f"{elapsed}:{seconds:02}"
     
