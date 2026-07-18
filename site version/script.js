@@ -25,7 +25,7 @@ FigSkating.addEventListener('click', () => {
 
 //const {getCode, getName} = require('country-list');
 
-const apiKey = "ce6f5e66ea3dd490c999a5fc1bfcf848";
+const apiKey = "YOUR-API-KEY";
 
 
 async function fetchLiveScores() {

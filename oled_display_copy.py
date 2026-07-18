@@ -12,7 +12,7 @@ import time
 
 # getting data from api, setting up
 import requests
-API_KEY = "ce6f5e66ea3dd490c999a5fc1bfcf848"
+API_KEY = "YOUR-API-KEY"
 
 # general variables
 team1 = ""

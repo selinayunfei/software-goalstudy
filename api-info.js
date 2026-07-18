@@ -1,4 +1,4 @@
-const apiKey = "ce6f5e66ea3dd490c999a5fc1bfcf848";
+const apiKey = "YOUR-API-KEY";
 async function fetchLiveScores() {
   const headers = new Headers();
   headers.append("x-apisports-key", apiKey);
