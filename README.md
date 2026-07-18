@@ -7,7 +7,7 @@
     <a href="https://github.com/selinayunfei/software-goalstudy"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://youtu.be/SAxZk_Y0tMs">View Demo</a>
     &middot;
     <a href="https://stardance.hackclub.com/projects/27955">Dev Logs</a>
   </p>
